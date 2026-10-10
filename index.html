@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily Routines · Rutinas diarias</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ffe9cc;--card:#ffd39a;--card2:#fff6e8;--ink:#4a2208;--acc:#e8590c;--acc2:#f59f00;--ok:#2b8a3e;--bad:#c92a2a;--line:#f08c3a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#2b150a;--card:#52290f;--card2:#3a1d0c;--ink:#ffe6c7;--line:#b3571b;--ok:#69db7c;--bad:#ff8787}}
+:root[data-theme="dark"]{--bg:#2b150a;--card:#52290f;--card2:#3a1d0c;--ink:#ffe6c7;--line:#b3571b;--ok:#69db7c;--bad:#ff8787}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Fredoka",ui-rounded,"Segoe UI",system-ui,sans-serif;line-height:1.5}
+main{max-width:720px;margin:0 auto;padding:16px 14px 40px}
+header{display:flex;align-items:center;gap:10px}
+h1{margin:0;font-size:1.9rem;line-height:1.1;flex:1}
+#th{border:2px solid var(--line);background:var(--card2);color:var(--ink);border-radius:50%;width:42px;height:42px;font-size:1.2rem;cursor:pointer}
+.sub{margin:4px 0 14px;opacity:.8}
+.sun{background:linear-gradient(135deg,var(--acc2),var(--acc));color:#2b1000;border-radius:22px;padding:14px 16px;margin-bottom:6px}
+.sun .big{display:flex;align-items:center;gap:12px;font-weight:600}
+.sun .em{font-size:2.6rem;transition:transform .25s}
+.sun input{width:100%;margin-top:10px;accent-color:#7a2e00}
+.sun small{display:block;font-weight:400}
+.folder{margin:12px 0;border-radius:20px;background:var(--card);border:2px solid var(--line);overflow:hidden}
+.folder .folder{background:var(--card2);border-radius:16px;margin:10px 0}
+.fh{display:flex;align-items:center;gap:10px;width:100%;padding:14px;background:none;border:0;font:inherit;color:inherit;cursor:pointer;text-align:left;font-weight:600;font-size:1.15rem}
+.folder .folder .fh{font-size:1rem;padding:11px 12px}
+.fh:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.fi{font-size:1.7rem;transition:transform .3s;display:inline-block;min-width:1.9em;text-align:center}.fi.sw{animation:swap .5s}@keyframes swap{0%{transform:scale(.3) rotate(-50deg);opacity:0}70%{transform:scale(1.3) rotate(10deg)}100%{transform:none;opacity:1}}
+.open>.fh .fi{transform:rotate(-10deg) scale(1.18)}
+.fsv .fl,.fsv .sn{transform-box:fill-box;transition:transform .4s cubic-bezier(.3,1.6,.5,1)}.fsv .fl{transform-origin:bottom}.open>.fh .fsv .fl{transform:scaleY(.6) skewX(-12deg)}.open>.fh .fsv .sn{transform:translateY(-11px) scale(1.15)}
+.chev{margin-left:auto;transition:transform .3s}
+.open>.fh .chev{transform:rotate(180deg)}
+.fb{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.open>.fb{grid-template-rows:1fr}
+.fb>div{overflow:hidden;min-height:0}
+.inner{padding:0 12px 12px}
+h4{margin:14px 0 4px;font-size:1rem}
+p{margin:6px 0}ul{margin:4px 0;padding-left:20px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{background:var(--acc2);color:#2b1000;border-radius:999px;padding:2px 10px;font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px}
+.fc,.mk,.qa,.tb,.ck{font:inherit;color:inherit;cursor:pointer}
+.fc{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px 8px;min-height:62px;font-weight:600}
+.fc .b,.fc.flip .a{display:none}.fc.flip .b{display:inline}
+.fc.flip{background:var(--acc);color:#fff;animation:pop .3s}
+@keyframes pop{50%{transform:scale(1.08)}}
+.eng{background:var(--card);border-left:5px solid var(--acc);border-radius:10px;padding:10px 12px;margin:8px 0}
+.tb,.mk,.qa{display:block;width:100%;text-align:left;background:var(--card);border:2px dashed var(--line);border-radius:12px;padding:8px 12px;margin-top:8px}
+.tb{width:auto;border-style:solid;background:var(--acc);color:#fff;border-radius:999px}
+.tr,.rv{display:none;margin:6px 0;padding:8px 12px;border-radius:10px;background:var(--card);border-left:5px solid var(--acc2)}
+.show{display:block}
+.ex{margin:10px 0}
+.ex input{font:inherit;width:9.5em;max-width:100%;padding:3px 8px;border-radius:8px;border:2px solid var(--line);background:var(--card2);color:var(--ink)}
+.ex input.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 25%,transparent)}
+.ex input.no{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 22%,transparent)}
+.ck{background:var(--acc);color:#fff;border:0;border-radius:999px;padding:8px 20px;font-weight:600}
+.cf{position:fixed;top:-30px;font-size:1.6rem;animation:fall 2.2s linear forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(115vh) rotate(420deg)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body><main>
+<header><h1>Daily Routines<br><small style="font-size:.95rem;font-weight:400">Rutinas diarias</small></h1><button id="th" aria-label="Tema claro u oscuro">🌙</button></header>
+<div class="sun"><div class="big"><span class="em" id="em">⏰</span><div><span id="en"></span><small id="es"></small></div></div>
+<input id="hr" type="range" min="5" max="22" value="6" aria-label="Hora del día"><small id="hl" style="text-align:right"></small></div>
+<div id="app"></div></main>
+<script>
+const $=s=>document.querySelector(s);
+const SCH=[[5,"😴","I sleep.","Duermo."],[6,"⏰","I wake up and get up.","Me despierto y me levanto."],[7,"🚌","I go to school.","Voy a la escuela."],[8,"📚","I study at school.","Estudio en la escuela."],[12,"🍽️","I have lunch.","Almuerzo."],[15,"🏠","I go home.","Voy a casa."],[17,"✏️","I do my homework.","Hago mi tarea."],[19,"🍲","I have dinner.","Ceno."],[20,"📺","I watch TV.","Veo televisión."],[22,"🌙","I go to bed.","Me acuesto."]];
+function clock(){const h=+$("#hr").value;let s=SCH[0];SCH.forEach(x=>{if(h>=x[0])s=x});
+$("#em").textContent=s[1];$("#en").textContent=s[2];$("#es").textContent=s[3];
+$("#hl").textContent="At "+h+":00 · A las "+h+":00";$("#em").style.transform="scale(1.25) rotate(-8deg)";setTimeout(()=>$("#em").style.transform="",200)}
+$("#hr").oninput=clock;clock();
+const V=[["wake up","despertarse","stop sleeping"],["get up","levantarse","leave your bed"],["take a shower","bañarse","wash with water"],["brush my teeth","cepillarme los dientes","clean your teeth"],["get dressed","vestirse","put on clothes"],["have breakfast","desayunar","eat in the morning"],["go to school","ir a la escuela","travel to class"],["have lunch","almorzar","eat at midday"],["do homework","hacer la tarea","school work at home"],["have dinner","cenar","eat in the evening"],["go to bed","acostarse","get in your bed"],["go to sleep","dormirse","start sleeping"]];
+const G={es:`<p>Usamos el <b>Present Simple</b> para hábitos y rutinas.</p>
+<h4>✅ Afirmativa</h4><p>Sujeto + verbo. Con <b>he / she / it</b> se agrega <b>-s</b>.</p><ul><li>I wake up at 6:00. <i>Me despierto a las 6:00.</i></li><li>She wakes up at 6:30. <i>Ella se despierta a las 6:30.</i></li></ul>
+<div class="chips"><span>wake → wake<b>s</b></span><span>watch → watch<b>es</b></span><span>go → go<b>es</b></span><span>study → stud<b>ies</b></span><span>have → <b>has</b></span></div>
+<h4>🚫 Negativa</h4><p><b>don't</b> (I, you, we, they) o <b>doesn't</b> (he, she, it) + verbo base. Con <i>doesn't</i> el verbo NO lleva -s.</p><ul><li>I don't eat breakfast at home. <i>No desayuno en casa.</i></li><li>He doesn't go to school on Sunday. <i>Él no va a la escuela el domingo.</i></li></ul>
+<h4>❓ Preguntas</h4><p><b>Do / Does</b> + sujeto + verbo base.</p><ul><li>Do you take a shower in the morning? <i>¿Te bañas en la mañana?</i> → Yes, I do. / No, I don't.</li><li>Does she study at night? → Yes, she does.</li><li>What time do you get up? <i>¿A qué hora te levantas?</i></li></ul>
+<h4>⏱️ Adverbios de frecuencia</h4><p>Van <b>antes del verbo</b>, pero después de <i>to be</i>: I always brush my teeth. She is never late.</p>
+<div class="chips"><span>always · siempre</span><span>usually · usualmente</span><span>often · a menudo</span><span>sometimes · a veces</span><span>rarely · casi nunca</span><span>never · nunca</span></div>
+<h4>🕐 at / in / on</h4><ul><li><b>at</b> + hora: at 7:00, at noon</li><li><b>in</b> + parte del día: in the morning, in the afternoon</li><li><b>on</b> + día: on Monday · y se dice <b>at night</b></li></ul>`,
+en:`<p>We use the <b>Present Simple</b> for habits and routines.</p>
+<h4>✅ Affirmative</h4><p>Subject + verb. Add <b>-s</b> for <b>he / she / it</b>.</p><ul><li>I wake up at 6:00.</li><li>She wakes up at 6:30.</li></ul>
+<div class="chips"><span>wake → wake<b>s</b></span><span>watch → watch<b>es</b></span><span>go → go<b>es</b></span><span>study → stud<b>ies</b></span><span>have → <b>has</b></span></div>
+<h4>🚫 Negative</h4><p><b>don't</b> (I, you, we, they) or <b>doesn't</b> (he, she, it) + base verb. After <i>doesn't</i>, no -s.</p><ul><li>I don't eat breakfast at home.</li><li>He doesn't go to school on Sunday.</li></ul>
+<h4>❓ Questions</h4><p><b>Do / Does</b> + subject + base verb.</p><ul><li>Do you take a shower in the morning? → Yes, I do. / No, I don't.</li><li>Does she study at night? → Yes, she does.</li><li>What time do you get up?</li></ul>
+<h4>⏱️ Adverbs of frequency</h4><p>They go <b>before the main verb</b>, but after <i>to be</i>: I always brush my teeth. She is never late.</p>
+<div class="chips"><span>always 100%</span><span>usually 80%</span><span>often 60%</span><span>sometimes 40%</span><span>rarely 10%</span><span>never 0%</span></div>
+<h4>🕐 at / in / on</h4><ul><li><b>at</b> + time: at 7:00, at noon</li><li><b>in</b> + part of the day: in the morning, in the afternoon</li><li><b>on</b> + day: on Monday · always <b>at night</b></li></ul>`};
+const TX=[["My Daily Routine","I am Carlos. I am fifteen years old and I live in Santo Domingo. I wake up at 6:00 in the morning. First, I take a shower and brush my teeth. Then I get dressed and have breakfast with my family. I go to school at 7:00. I usually have lunch at school at 12:00. In the afternoon, I go home and do my homework. I sometimes help my mother in the kitchen. At 8:00 p.m. I have dinner. I never go to bed late. I go to sleep at 10:00.","Soy Carlos. Tengo quince años y vivo en Santo Domingo. Me despierto a las 6:00 de la mañana. Primero me baño y me cepillo los dientes. Luego me visto y desayuno con mi familia. Voy a la escuela a las 7:00. Usualmente almuerzo en la escuela a las 12:00. En la tarde voy a casa y hago mi tarea. A veces ayudo a mi mamá en la cocina. A las 8:00 p.m. ceno. Nunca me acuesto tarde. Me duermo a las 10:00.",[["What time does Carlos wake up?","At 6:00 in the morning."],["Where does he usually have lunch?","At school."],["What does he do in the afternoon?","He goes home and does his homework."],["Does he go to bed late?","No, he never goes to bed late."]]],
+["Maria's Day","Maria is a student. She gets up at 6:30. She doesn't eat a big breakfast, but she always drinks a glass of milk. She goes to school by bus. Her classes start at 8:00. She studies English and Math every day. After school, she plays volleyball with her friends. She often watches TV in the evening. She goes to bed at 9:30.","María es estudiante. Se levanta a las 6:30. No desayuna mucho, pero siempre toma un vaso de leche. Va a la escuela en guagua. Sus clases empiezan a las 8:00. Estudia inglés y matemáticas todos los días. Después de la escuela juega voleibol con sus amigos. A menudo ve televisión en la noche. Se acuesta a las 9:30.",[["How does Maria go to school?","By bus."],["What does she always drink?","A glass of milk."],["What does she do after school?","She plays volleyball with her friends."],["What time does she go to bed?","At 9:30."]]]];
+const ER=[["She wake up at 6.","She wakes up at 6.","Falta la -s con she. · Add -s with she."],["He doesn't goes to school.","He doesn't go to school.","Con doesn't el verbo va en base. · After doesn't, use the base verb."],["Does she studies?","Does she study?","Con does el verbo va en base. · After does, use the base verb."],["I go always to school.","I always go to school.","El adverbio va antes del verbo. · The adverb goes before the verb."],["I wake up in 6:00.","I wake up at 6:00.","Con la hora se usa at. · Use at with clock times."]];
+const EX=[["My brother","(get up) at 7:00.",["gets up"]],["They","(not / watch) TV in the morning.",["don't watch","do not watch"]],["Do you","(have) breakfast at home?",["have"]],["She","(study) every night.",["studies"]],["He","(go) to bed at 10:00.",["goes"]]];
+const LB={es:{n:"Carpeta 1: Español",v:"Vocabulario",g:"Gramática",t:"Textos para leer",e:"Errores comunes",x:"Ejercicios",hint:"Toca una tarjeta para ver el significado.",tr:"Ver traducción",eh:"Toca cada error para ver la corrección.",ck:"Comprobar",sc:"Puntos"},
+en:{n:"FOLDER 2: ENGLISH",v:"Vocabulary",g:"Grammar",t:"Reading texts",e:"Common mistakes",x:"Practice",hint:"Tap a card to see the simple meaning.",tr:"",eh:"Tap each mistake to see the fix.",ck:"Check",sc:"Score"}};
+const FS=`<svg class="fsv" viewBox="0 0 48 42" width="46" height="40" aria-hidden="true"><path d="M3 8a4 4 0 0 1 4-4h11l5 5h18a4 4 0 0 1 4 4v22a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z" fill="#b83a0a"/><g class="sn"><circle cx="24" cy="23" r="7" fill="#ffd43b"/><path d="M24 11v3M24 32v3M12 23h3M33 23h3M16 15l2 2M32 15l-2 2" stroke="#ffd43b" stroke-width="2" stroke-linecap="round"/></g><path class="fl" d="M3 19a4 4 0 0 1 4-4h34a4 4 0 0 1 4 4v15a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z" fill="#ff922b"/><path d="M10 29h14" stroke="#fff3" stroke-width="3" stroke-linecap="round"/></svg>`;
+const F=(ic,t,b,c="",o=0)=>{const[a,z]=ic.split("|");return`<section class="folder ${c}${o?" open":""}"><button class="fh" aria-expanded="${!!o}" data-c="${a}" data-o="${z||a}"><span class="fi" data-s="${ic}">${a}</span><span>${t}</span><span class="chev">▾</span></button><div class="fb"><div><div class="inner">${b}</div></div></div></section>`};
+function lang(k){const l=LB[k],es=k=="es";
+const vo=`<p>${l.hint}</p><div class="grid">${V.map(v=>`<button class="fc" data-flip><span class="a">${v[0]}</span><span class="b">${es?v[1]:v[2]}</span></button>`).join("")}</div>`;
+const tx=TX.map((x,i)=>`<h4>${i+1}. ${x[0]}</h4><div class="eng">${x[1]}</div>`+(es?`<button class="tb" data-tr>${l.tr}</button><div class="tr">${x[2]}</div>`:x[3].map((q,j)=>`<button class="qa" data-rv>${j+1}. ${q[0]}</button><div class="rv">${q[1]}</div>`).join(""))).join("");
+const er=`<p>${l.eh}</p>`+ER.map(e=>`<button class="mk" data-rv>❌ <s>${e[0]}</s></button><div class="rv">✅ <b>${e[1]}</b><br><small>${e[2].split(" · ")[es?0:1]}</small></div>`).join("");
+const ex=EX.map((e,i)=>`<p class="ex">${i+1}. ${e[0]} <input data-i="${i}" autocomplete="off" autocapitalize="off" aria-label="${i+1}"> ${e[1]}</p>`).join("")+`<button class="ck" data-ck>${l.ck}</button> <b class="res"></b>`;
+return F(es?"⏰|🚿|🪥|🍳|🚌|📚|🍽️|⚽|📺|🌙":"🌙|⏰|🚿|🪥|🍳|🚌|📚|🍽️|⚽|📺",(es?"🇩🇴 ":"🇬🇧 ")+l.n,F("🚿|🪥|👕|🍳",l.v,vo)+F("🕐|🕓|🕗|🕙",l.g,G[k])+F("📖|🚌|🏫|🏠",l.t,tx)+F("🔍|🔧|✅|💡",l.e,er)+F("✏️|📝|⭐|🏆",l.x,ex))}
+$("#app").innerHTML=lang("en");
+const norm=s=>s.toLowerCase().replace(/[’`]/g,"'").replace(/\s+/g," ").trim();
+function boom(){for(let i=0;i<26;i++){const s=document.createElement("span");s.className="cf";s.textContent=["🔥","🧡","⭐","🍊","☀️"][i%5];s.style.left=Math.random()*100+"vw";s.style.animationDelay=Math.random()*.6+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),3200)}}
+document.addEventListener("click",e=>{const t=e.target;let b;
+if(b=t.closest(".fh")){const f=b.parentElement,o=f.classList.toggle("open");b.setAttribute("aria-expanded",o);return}
+if(b=t.closest("[data-flip]")){b.classList.toggle("flip");return}
+if(b=t.closest("[data-tr]")){const d=b.nextElementSibling,o=d.classList.toggle("show");b.textContent=o?"Ocultar traducción":"Ver traducción";return}
+if(b=t.closest("[data-rv]")){b.nextElementSibling.classList.toggle("show");return}
+if(b=t.closest("[data-ck]")){const box=b.parentElement;let n=0;box.querySelectorAll("input[data-i]").forEach(i=>{const ok=EX[i.dataset.i][2].includes(norm(i.value));i.className=ok?"ok":"no";if(ok)n++});
+box.querySelector(".res").textContent=n+" / "+EX.length;if(n==EX.length){boom()}return}
+if(t.id=="th"){const r=document.documentElement,d=getComputedStyle(r).getPropertyValue("--bg").trim()=="#2b150a";r.dataset.theme=d?"light":"dark";t.textContent=d?"🌙":"☀️"}});
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches){let n=0;setInterval(()=>{n++;document.querySelectorAll(".fi[data-s]").forEach((el,i)=>{const s=el.dataset.s.split("|");if(s.length<2)return;el.textContent=s[(n+i)%s.length];el.classList.remove("sw");void el.offsetWidth;el.classList.add("sw")})},1600)}
+</script></body></html>
